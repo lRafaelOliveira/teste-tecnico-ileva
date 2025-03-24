@@ -54,11 +54,14 @@ class ContatoService
     {
         $this->db->consult('contatos', '*', "WHERE usuario_id = $usuarioId");
         $dados = [];
-
-        while ($row = mysqli_fetch_assoc($this->db->mysqry)) {
+        while ($row = mysqli_fetch_object($this->db->mysqry)) {
             $dados[] = $row;
         }
-
+        foreach ($dados as $row) {
+            $row->telefones = $this->buscarFilhos('telefones', $row->id);
+            $row->emails = $this->buscarFilhos('emails', $row->id);
+            $row->enderecos = $this->buscarFilhos('enderecos', $row->id);
+        }
         return $dados;
     }
     public function buscar(int $id, int $usuarioId): array
