@@ -3,7 +3,7 @@
 namespace src\Middlewares;
 
 use Exception;
-use src\services\AuthService;
+use src\Services\AuthService;
 
 class AuthMiddleware
 {

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,6 +30,7 @@
         }
     </script>
 </head>
+
 <body class="bg-gray-100 min-h-screen">
     <nav class="bg-white shadow">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -39,7 +41,8 @@
                     </div>
                 </div>
                 <div class="flex items-center">
-                    <a href="contacts.html" class="ml-4 px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                    <a href="contacts.html"
+                        class="ml-4 px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
                         Back to Contacts
                     </a>
                 </div>
@@ -50,13 +53,18 @@
     <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <div class="px-4 py-6 sm:px-0">
             <div id="loading" class="flex justify-center items-center py-10">
-                <svg class="animate-spin h-10 w-10 text-primary-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <svg class="animate-spin h-10 w-10 text-primary-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    <path class="opacity-75" fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                    </path>
                 </svg>
             </div>
 
-            <div id="error-message" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4 hidden" role="alert">
+            <div id="error-message"
+                class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4 hidden"
+                role="alert">
                 <span id="error-text" class="block sm:inline"></span>
             </div>
 
@@ -67,11 +75,13 @@
     </div>
 
     <!-- Phone Modal -->
-    <div id="phoneModal" class="fixed z-10 inset-0 overflow-y-auto hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div id="phoneModal" class="fixed z-10 inset-0 overflow-y-auto hidden" aria-labelledby="modal-title" role="dialog"
+        aria-modal="true">
         <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
             <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
             <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+            <div
+                class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                 <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                     <div class="sm:flex sm:items-start">
                         <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
@@ -81,12 +91,16 @@
                             <div class="mt-4">
                                 <form id="phoneForm" class="space-y-4">
                                     <div>
-                                        <label for="modalPhone" class="block text-sm font-medium text-gray-700">Phone Number</label>
-                                        <input type="text" id="modalPhone" name="modalPhone" required class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <label for="modalPhone" class="block text-sm font-medium text-gray-700">Phone
+                                            Number</label>
+                                        <input type="text" id="modalPhone" name="modalPhone" required
+                                            class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
                                     <div>
-                                        <label for="modalPhoneType" class="block text-sm font-medium text-gray-700">Type</label>
-                                        <select id="modalPhoneType" name="modalPhoneType" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <label for="modalPhoneType"
+                                            class="block text-sm font-medium text-gray-700">Type</label>
+                                        <select id="modalPhoneType" name="modalPhoneType"
+                                            class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                             <option value="celular">Mobile</option>
                                             <option value="residencial">Home</option>
                                             <option value="comercial">Work</option>
@@ -94,8 +108,10 @@
                                         </select>
                                     </div>
                                     <div>
-                                        <label for="modalPhoneNotes" class="block text-sm font-medium text-gray-700">Notes</label>
-                                        <textarea id="modalPhoneNotes" name="modalPhoneNotes" rows="2" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
+                                        <label for="modalPhoneNotes"
+                                            class="block text-sm font-medium text-gray-700">Notes</label>
+                                        <textarea id="modalPhoneNotes" name="modalPhoneNotes" rows="2"
+                                            class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
                                     </div>
                                 </form>
                             </div>
@@ -103,10 +119,12 @@
                     </div>
                 </div>
                 <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                    <button type="button" id="savePhoneBtn" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary-600 text-base font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:ml-3 sm:w-auto sm:text-sm">
+                    <button type="button" id="savePhoneBtn"
+                        class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary-600 text-base font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:ml-3 sm:w-auto sm:text-sm">
                         Save
                     </button>
-                    <button type="button" id="closePhoneModalBtn" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                    <button type="button" id="closePhoneModalBtn"
+                        class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
                         Cancel
                     </button>
                 </div>
@@ -115,11 +133,13 @@
     </div>
 
     <!-- Email Modal -->
-    <div id="emailModal" class="fixed z-10 inset-0 overflow-y-auto hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div id="emailModal" class="fixed z-10 inset-0 overflow-y-auto hidden" aria-labelledby="modal-title" role="dialog"
+        aria-modal="true">
         <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
             <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
             <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+            <div
+                class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                 <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                     <div class="sm:flex sm:items-start">
                         <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
@@ -129,20 +149,26 @@
                             <div class="mt-4">
                                 <form id="emailForm" class="space-y-4">
                                     <div>
-                                        <label for="modalEmail" class="block text-sm font-medium text-gray-700">Email Address</label>
-                                        <input type="email" id="modalEmail" name="modalEmail" required class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <label for="modalEmail" class="block text-sm font-medium text-gray-700">Email
+                                            Address</label>
+                                        <input type="email" id="modalEmail" name="modalEmail" required
+                                            class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
                                     <div>
-                                        <label for="modalEmailType" class="block text-sm font-medium text-gray-700">Type</label>
-                                        <select id="modalEmailType" name="modalEmailType" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <label for="modalEmailType"
+                                            class="block text-sm font-medium text-gray-700">Type</label>
+                                        <select id="modalEmailType" name="modalEmailType"
+                                            class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                             <option value="pessoal">Personal</option>
                                             <option value="profissional">Work</option>
                                             <option value="outro">Other</option>
                                         </select>
                                     </div>
                                     <div>
-                                        <label for="modalEmailNotes" class="block text-sm font-medium text-gray-700">Notes</label>
-                                        <textarea id="modalEmailNotes" name="modalEmailNotes" rows="2" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
+                                        <label for="modalEmailNotes"
+                                            class="block text-sm font-medium text-gray-700">Notes</label>
+                                        <textarea id="modalEmailNotes" name="modalEmailNotes" rows="2"
+                                            class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
                                     </div>
                                 </form>
                             </div>
@@ -150,10 +176,12 @@
                     </div>
                 </div>
                 <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                    <button type="button" id="saveEmailBtn" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary-600 text-base font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:ml-3 sm:w-auto sm:text-sm">
+                    <button type="button" id="saveEmailBtn"
+                        class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary-600 text-base font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:ml-3 sm:w-auto sm:text-sm">
                         Save
                     </button>
-                    <button type="button" id="closeEmailModalBtn" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                    <button type="button" id="closeEmailModalBtn"
+                        class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
                         Cancel
                     </button>
                 </div>
@@ -162,11 +190,13 @@
     </div>
 
     <!-- Address Modal -->
-    <div id="addressModal" class="fixed z-10 inset-0 overflow-y-auto hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div id="addressModal" class="fixed z-10 inset-0 overflow-y-auto hidden" aria-labelledby="modal-title" role="dialog"
+        aria-modal="true">
         <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
             <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
             <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+            <div
+                class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                 <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                     <div class="sm:flex sm:items-start">
                         <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
@@ -176,36 +206,50 @@
                             <div class="mt-4">
                                 <form id="addressForm" class="space-y-4">
                                     <div>
-                                        <label for="modalAddressType" class="block text-sm font-medium text-gray-700">Type</label>
-                                        <select id="modalAddressType" name="modalAddressType" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <label for="modalAddressType"
+                                            class="block text-sm font-medium text-gray-700">Type</label>
+                                        <select id="modalAddressType" name="modalAddressType"
+                                            class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                             <option value="residencial">Home</option>
                                             <option value="comercial">Work</option>
                                             <option value="outro">Other</option>
                                         </select>
                                     </div>
                                     <div>
-                                        <label for="modalStreet" class="block text-sm font-medium text-gray-700">Street</label>
-                                        <input type="text" id="modalStreet" name="modalStreet" required class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <label for="modalStreet"
+                                            class="block text-sm font-medium text-gray-700">Street</label>
+                                        <input type="text" id="modalStreet" name="modalStreet" required
+                                            class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
                                     <div>
-                                        <label for="modalNumber" class="block text-sm font-medium text-gray-700">Number</label>
-                                        <input type="text" id="modalNumber" name="modalNumber" required class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <label for="modalNumber"
+                                            class="block text-sm font-medium text-gray-700">Number</label>
+                                        <input type="text" id="modalNumber" name="modalNumber" required
+                                            class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
                                     <div>
-                                        <label for="modalNeighborhood" class="block text-sm font-medium text-gray-700">Neighborhood</label>
-                                        <input type="text" id="modalNeighborhood" name="modalNeighborhood" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <label for="modalNeighborhood"
+                                            class="block text-sm font-medium text-gray-700">Neighborhood</label>
+                                        <input type="text" id="modalNeighborhood" name="modalNeighborhood"
+                                            class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
                                     <div>
-                                        <label for="modalCity" class="block text-sm font-medium text-gray-700">City</label>
-                                        <input type="text" id="modalCity" name="modalCity" required class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <label for="modalCity"
+                                            class="block text-sm font-medium text-gray-700">City</label>
+                                        <input type="text" id="modalCity" name="modalCity" required
+                                            class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
                                     <div>
-                                        <label for="modalState" class="block text-sm font-medium text-gray-700">State</label>
-                                        <input type="text" id="modalState" name="modalState" required class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <label for="modalState"
+                                            class="block text-sm font-medium text-gray-700">State</label>
+                                        <input type="text" id="modalState" name="modalState" required
+                                            class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
                                     <div>
-                                        <label for="modalZipcode" class="block text-sm font-medium text-gray-700">Zip Code</label>
-                                        <input type="text" id="modalZipcode" name="modalZipcode" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <label for="modalZipcode" class="block text-sm font-medium text-gray-700">Zip
+                                            Code</label>
+                                        <input type="text" id="modalZipcode" name="modalZipcode"
+                                            class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
                                 </form>
                             </div>
@@ -213,10 +257,12 @@
                     </div>
                 </div>
                 <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                    <button type="button" id="saveAddressBtn" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary-600 text-base font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:ml-3 sm:w-auto sm:text-sm">
+                    <button type="button" id="saveAddressBtn"
+                        class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary-600 text-base font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:ml-3 sm:w-auto sm:text-sm">
                         Save
                     </button>
-                    <button type="button" id="closeAddressModalBtn" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                    <button type="button" id="closeAddressModalBtn"
+                        class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
                         Cancel
                     </button>
                 </div>
@@ -226,45 +272,45 @@
 
     <script>
         // API base URL
-        const API_BASE_URL = 'http://localhost:81';
+        const API_BASE_URL = '/api';
         let contactId = null;
-        
+
         // Check if user is authenticated
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const token = sessionStorage.getItem('token');
             if (!token) {
                 window.location.href = 'login.html';
                 return;
             }
-            
+
             // Get contact ID from URL
             const urlParams = new URLSearchParams(window.location.search);
             contactId = urlParams.get('id');
-            
+
             if (!contactId) {
                 showError('Contact ID is missing');
                 return;
             }
-            
+
             // Load contact details
             fetchContactDetails(contactId);
         });
-        
+
         // Fetch contact details
         async function fetchContactDetails(id) {
             const token = sessionStorage.getItem('token');
             if (!token) return;
-            
+
             showLoading(true);
-            
+
             try {
-                const response = await fetch(`${API_BASE_URL}/contatos/${id}`, {
+                const response = await fetch(`${API_BASE_URL}/contatos/find/${id}`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
                 });
-                
+
                 if (!response.ok) {
                     if (response.status === 401) {
                         sessionStorage.removeItem('token');
@@ -273,7 +319,7 @@
                     }
                     throw new Error('Failed to fetch contact details');
                 }
-                
+
                 const contact = await response.json();
                 renderContactDetails(contact);
             } catch (error) {
@@ -282,14 +328,14 @@
                 showLoading(false);
             }
         }
-        
+
         // Add phone number
         async function addPhoneNumber(phoneData) {
             const token = sessionStorage.getItem('token');
             if (!token || !contactId) return;
-            
+
             showLoading(true);
-            
+
             try {
                 const response = await fetch(`${API_BASE_URL}/contatos/${contactId}/telefones`, {
                     method: 'POST',
@@ -299,7 +345,7 @@
                     },
                     body: JSON.stringify(phoneData)
                 });
-                
+
                 if (!response.ok) {
                     if (response.status === 401) {
                         sessionStorage.removeItem('token');
@@ -308,7 +354,7 @@
                     }
                     throw new Error('Failed to add phone number');
                 }
-                
+
                 // Refresh contact details
                 fetchContactDetails(contactId);
             } catch (error) {
@@ -317,14 +363,14 @@
                 showLoading(false);
             }
         }
-        
+
         // Add email
         async function addEmail(emailData) {
             const token = sessionStorage.getItem('token');
             if (!token || !contactId) return;
-            
+
             showLoading(true);
-            
+
             try {
                 const response = await fetch(`${API_BASE_URL}/contatos/${contactId}/emails`, {
                     method: 'POST',
@@ -334,7 +380,7 @@
                     },
                     body: JSON.stringify(emailData)
                 });
-                
+
                 if (!response.ok) {
                     if (response.status === 401) {
                         sessionStorage.removeItem('token');
@@ -343,7 +389,7 @@
                     }
                     throw new Error('Failed to add email');
                 }
-                
+
                 // Refresh contact details
                 fetchContactDetails(contactId);
             } catch (error) {
@@ -352,14 +398,14 @@
                 showLoading(false);
             }
         }
-        
+
         // Add address
         async function addAddress(addressData) {
             const token = sessionStorage.getItem('token');
             if (!token || !contactId) return;
-            
+
             showLoading(true);
-            
+
             try {
                 const response = await fetch(`${API_BASE_URL}/contatos/${contactId}/enderecos`, {
                     method: 'POST',
@@ -369,7 +415,7 @@
                     },
                     body: JSON.stringify(addressData)
                 });
-                
+
                 if (!response.ok) {
                     if (response.status === 401) {
                         sessionStorage.removeItem('token');
@@ -378,7 +424,7 @@
                     }
                     throw new Error('Failed to add address');
                 }
-                
+
                 // Refresh contact details
                 fetchContactDetails(contactId);
             } catch (error) {
@@ -387,11 +433,11 @@
                 showLoading(false);
             }
         }
-        
+
         // Render contact details
         function renderContactDetails(contact) {
             const contactDetails = document.getElementById('contactDetails');
-            
+
             contactDetails.innerHTML = `
                 <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
                     <div>
@@ -414,8 +460,8 @@
                         <div class="bg-white px-4 py-5 sm:px-6">
                             <dt class="text-sm font-medium text-gray-500 mb-2">Phone Numbers</dt>
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0">
-                                ${contact.telefones && contact.telefones.length > 0 ? 
-                                    `<ul class="divide-y divide-gray-200">
+                                ${contact.telefones && contact.telefones.length > 0 ?
+                    `<ul class="divide-y divide-gray-200">
                                         ${contact.telefones.map(phone => `
                                             <li class="py-2 flex justify-between">
                                                 <div>
@@ -428,8 +474,8 @@
                                     </ul>
                                     <button id="addPhoneBtn" class="mt-3 inline-flex items-center px-3 py-1 border border-transparent text-sm font-medium rounded-md text-primary-700 bg-primary-100 hover:bg-primary-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
                                         <i class="fas fa-plus mr-1"></i> Add Phone
-                                    </button>` 
-                                : `<p class="text-gray-500">No phone numbers</p>
+                                    </button>`
+                    : `<p class="text-gray-500">No phone numbers</p>
                                    <button id="addPhoneBtn" class="mt-3 inline-flex items-center px-3 py-1 border border-transparent text-sm font-medium rounded-md text-primary-700 bg-primary-100 hover:bg-primary-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
                                        <i class="fas fa-plus mr-1"></i> Add Phone
                                    </button>`}
@@ -439,8 +485,8 @@
                         <div class="bg-gray-50 px-4 py-5 sm:px-6">
                             <dt class="text-sm font-medium text-gray-500 mb-2">Email Addresses</dt>
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0">
-                                ${contact.emails && contact.emails.length > 0 ? 
-                                    `<ul class="divide-y divide-gray-200">
+                                ${contact.emails && contact.emails.length > 0 ?
+                    `<ul class="divide-y divide-gray-200">
                                         ${contact.emails.map(email => `
                                             <li class="py-2 flex justify-between">
                                                 <div>
@@ -453,8 +499,8 @@
                                     </ul>
                                     <button id="addEmailBtn" class="mt-3 inline-flex items-center px-3 py-1 border border-transparent text-sm font-medium rounded-md text-primary-700 bg-primary-100 hover:bg-primary-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
                                         <i class="fas fa-plus mr-1"></i> Add Email
-                                    </button>` 
-                                : `<p class="text-gray-500">No email addresses</p>
+                                    </button>`
+                    : `<p class="text-gray-500">No email addresses</p>
                                    <button id="addEmailBtn" class="mt-3 inline-flex items-center px-3 py-1 border border-transparent text-sm font-medium rounded-md text-primary-700 bg-primary-100 hover:bg-primary-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
                                        <i class="fas fa-plus mr-1"></i> Add Email
                                    </button>`}
@@ -464,8 +510,8 @@
                         <div class="bg-white px-4 py-5 sm:px-6">
                             <dt class="text-sm font-medium text-gray-500 mb-2">Addresses</dt>
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0">
-                                ${contact.enderecos && contact.enderecos.length > 0 ? 
-                                    `<ul class="divide-y divide-gray-200">
+                                ${contact.enderecos && contact.enderecos.length > 0 ?
+                    `<ul class="divide-y divide-gray-200">
                                         ${contact.enderecos.map(address => `
                                             <li class="py-2 flex justify-between">
                                                 <div>
@@ -479,8 +525,8 @@
                                     </ul>
                                     <button id="addAddressBtn" class="mt-3 inline-flex items-center px-3 py-1 border border-transparent text-sm font-medium rounded-md text-primary-700 bg-primary-100 hover:bg-primary-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
                                         <i class="fas fa-plus mr-1"></i> Add Address
-                                    </button>` 
-                                : `<p class="text-gray-500">No addresses</p>
+                                    </button>`
+                    : `<p class="text-gray-500">No addresses</p>
                                    <button id="addAddressBtn" class="mt-3 inline-flex items-center px-3 py-1 border border-transparent text-sm font-medium rounded-md text-primary-700 bg-primary-100 hover:bg-primary-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
                                        <i class="fas fa-plus mr-1"></i> Add Address
                                    </button>`}
@@ -489,73 +535,73 @@
                     </dl>
                 </div>
             `;
-            
+
             contactDetails.classList.remove('hidden');
-            
+
             // Add event listeners for modals
-            document.getElementById('addPhoneBtn').addEventListener('click', function() {
+            document.getElementById('addPhoneBtn').addEventListener('click', function () {
                 document.getElementById('phoneModal').classList.remove('hidden');
             });
-            
-            document.getElementById('addEmailBtn').addEventListener('click', function() {
+
+            document.getElementById('addEmailBtn').addEventListener('click', function () {
                 document.getElementById('emailModal').classList.remove('hidden');
             });
-            
-            document.getElementById('addAddressBtn').addEventListener('click', function() {
+
+            document.getElementById('addAddressBtn').addEventListener('click', function () {
                 document.getElementById('addressModal').classList.remove('hidden');
             });
         }
-        
+
         // Modal event listeners
-        document.getElementById('closePhoneModalBtn').addEventListener('click', function() {
+        document.getElementById('closePhoneModalBtn').addEventListener('click', function () {
             document.getElementById('phoneModal').classList.add('hidden');
         });
-        
-        document.getElementById('savePhoneBtn').addEventListener('click', function() {
+
+        document.getElementById('savePhoneBtn').addEventListener('click', function () {
             const phone = document.getElementById('modalPhone').value;
             const type = document.getElementById('modalPhoneType').value;
             const notes = document.getElementById('modalPhoneNotes').value;
-            
+
             if (phone) {
                 const phoneData = {
                     numero: phone,
                     tipo: type,
                     observacao: notes
                 };
-                
+
                 addPhoneNumber(phoneData);
                 document.getElementById('phoneModal').classList.add('hidden');
                 document.getElementById('phoneForm').reset();
             }
         });
-        
-        document.getElementById('closeEmailModalBtn').addEventListener('click', function() {
+
+        document.getElementById('closeEmailModalBtn').addEventListener('click', function () {
             document.getElementById('emailModal').classList.add('hidden');
         });
-        
-        document.getElementById('saveEmailBtn').addEventListener('click', function() {
+
+        document.getElementById('saveEmailBtn').addEventListener('click', function () {
             const email = document.getElementById('modalEmail').value;
             const type = document.getElementById('modalEmailType').value;
             const notes = document.getElementById('modalEmailNotes').value;
-            
+
             if (email) {
                 const emailData = {
                     email: email,
                     tipo: type,
                     observacao: notes
                 };
-                
+
                 addEmail(emailData);
                 document.getElementById('emailModal').classList.add('hidden');
                 document.getElementById('emailForm').reset();
             }
         });
-        
-        document.getElementById('closeAddressModalBtn').addEventListener('click', function() {
+
+        document.getElementById('closeAddressModalBtn').addEventListener('click', function () {
             document.getElementById('addressModal').classList.add('hidden');
         });
-        
-        document.getElementById('saveAddressBtn').addEventListener('click', function() {
+
+        document.getElementById('saveAddressBtn').addEventListener('click', function () {
             const type = document.getElementById('modalAddressType').value;
             const street = document.getElementById('modalStreet').value;
             const number = document.getElementById('modalNumber').value;
@@ -563,7 +609,7 @@
             const city = document.getElementById('modalCity').value;
             const state = document.getElementById('modalState').value;
             const zipcode = document.getElementById('modalZipcode').value;
-            
+
             if (street && city && state) {
                 const addressData = {
                     tipo: type,
@@ -574,18 +620,18 @@
                     estado: state,
                     cep: zipcode
                 };
-                
+
                 addAddress(addressData);
                 document.getElementById('addressModal').classList.add('hidden');
                 document.getElementById('addressForm').reset();
             }
         });
-        
+
         // Show/hide loading spinner
         function showLoading(show) {
             const loading = document.getElementById('loading');
             const contactDetails = document.getElementById('contactDetails');
-            
+
             if (show) {
                 loading.classList.remove('hidden');
                 contactDetails.classList.add('hidden');
@@ -593,15 +639,15 @@
                 loading.classList.add('hidden');
             }
         }
-        
+
         // Show error message
         function showError(message) {
             const errorMessage = document.getElementById('error-message');
             const errorText = document.getElementById('error-text');
-            
+
             errorText.textContent = message;
             errorMessage.classList.remove('hidden');
-            
+
             // Hide after 5 seconds
             setTimeout(() => {
                 errorMessage.classList.add('hidden');
@@ -609,4 +655,5 @@
         }
     </script>
 </body>
+
 </html>

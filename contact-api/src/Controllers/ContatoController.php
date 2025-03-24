@@ -3,7 +3,7 @@
 namespace src\controllers;
 
 use core\Controller;
-use src\services\ContatoService;
+use src\Services\ContatoService;
 use Exception;
 
 class ContatoController extends Controller

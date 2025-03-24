@@ -74,7 +74,7 @@
 
     <script>
         // API base URL
-        const API_BASE_URL = 'http://localhost:81';
+        const API_BASE_URL = '/api';
 
         // Check if user is already logged in
         document.addEventListener('DOMContentLoaded', function () {
@@ -114,9 +114,14 @@
                 });
 
                 const data = await response.json();
-
                 if (!response.ok) {
                     throw new Error(data.message || 'Login failed');
+                }
+                if (data.error) {
+                    throw new Error(data.error.message || 'Login failed');
+                }
+                if (!data.token) {
+                    throw new Error('Token not found');
                 }
 
                 // Store token in sessionStorage

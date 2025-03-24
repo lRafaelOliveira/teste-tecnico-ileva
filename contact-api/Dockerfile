@@ -1,19 +1,18 @@
-FROM php:8.2-apache
+FROM php:8.1-apache
 
-# Instala extensões do PHP necessárias
-RUN docker-php-ext-install mysqli pdo pdo_mysql
-
-# Habilita mod_rewrite do Apache
+# Habilita mod_rewrite
 RUN a2enmod rewrite
 
-# Define o diretório raiz do Apache
-ENV APACHE_DOCUMENT_ROOT /var/www/html/public
+# Instala extensões necessárias
+RUN docker-php-ext-install pdo pdo_mysql mysqli
 
-# Altera o VirtualHost para usar /public
-RUN sed -ri -e 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/000-default.conf
-
-# Copia arquivos do projeto para o container
+# Copia os arquivos para o container
 COPY . /var/www/html/
+
+# Define o diretório de trabalho
+WORKDIR /var/www/html/
 
 # Permissões
 RUN chown -R www-data:www-data /var/www/html
+
+EXPOSE 80

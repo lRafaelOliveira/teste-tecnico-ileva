@@ -132,7 +132,7 @@
 
     <script>
         // API base URL
-        const API_BASE_URL = 'http://localhost:81';
+        const API_BASE_URL = '/api';
 
         // Check if user is authenticated
         document.addEventListener('DOMContentLoaded', function () {
@@ -153,32 +153,32 @@
         });
 
         // Search
-        document.getElementById('searchBtn').addEventListener('click', function () {
-            const searchInput = document.getElementById('searchInput');
-            const searchType = document.getElementById('searchType');
+        // document.getElementById('searchBtn').addEventListener('click', function () {
+        //     const searchInput = document.getElementById('searchInput');
+        //     const searchType = document.getElementById('searchType');
 
-            if (searchInput.value.trim()) {
-                const searchTerm = searchInput.value.trim();
-                const type = searchType.value;
+        //     if (searchInput.value.trim()) {
+        //         const searchTerm = searchInput.value.trim();
+        //         const type = searchType.value;
 
-                if (type === 'email') {
-                    searchContactsByEmail(searchTerm);
-                } else if (type === 'phone') {
-                    searchContactsByPhone(searchTerm);
-                } else {
-                    // Name search - client side filtering
-                    fetchContacts().then(() => {
-                        filterContactsByName(searchTerm);
-                    });
-                }
-            }
-        });
+        //         if (type === 'email') {
+        //             searchContactsByEmail(searchTerm);
+        //         } else if (type === 'phone') {
+        //             searchContactsByPhone(searchTerm);
+        //         } else {
+        //             // Name search - client side filtering
+        //             fetchContacts().then(() => {
+        //                 filterContactsByName(searchTerm);
+        //             });
+        //         }
+        //     }
+        // });
 
         // Clear search
-        document.getElementById('clearSearchBtn').addEventListener('click', function () {
-            document.getElementById('searchInput').value = '';
-            fetchContacts();
-        });
+        // document.getElementById('clearSearchBtn').addEventListener('click', function () {
+        //     document.getElementById('searchInput').value = '';
+        //     fetchContacts();
+        // });
 
         // Fetch all contacts
         async function fetchContacts() {
@@ -203,6 +203,7 @@
                     }
                     throw new Error('Failed to fetch contacts');
                 }
+                
 
                 const data = await response.json();
                 renderContacts(data);
@@ -337,7 +338,6 @@
         // Render contacts table
         function renderContacts(contacts) {
             const contactsTable = document.getElementById('contactsTable');
-
             if (!contacts || contacts.length === 0) {
                 contactsTable.innerHTML = `
                     <tr>

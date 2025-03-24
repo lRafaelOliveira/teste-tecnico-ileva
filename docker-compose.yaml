@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: ./contact-api
+    container_name: contact-api
+    ports:
+      - "8080:80" # API disponível em localhost:8080
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./contact-front
+    container_name: contact-front
+    ports:
+      - "8081:80" # Frontend disponível em localhost:8081
+    networks:
+      - app-network
+    depends_on:
+      - api
+
+networks:
+  app-network:
+    driver: bridge

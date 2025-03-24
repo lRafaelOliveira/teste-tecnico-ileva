@@ -12,7 +12,7 @@ class RouterBase
     {
         try {
             // ✅ Middleware CORS sempre antes de tudo
-            (new \src\middlewares\CorsMiddleware())->handle();
+            (new \src\Middlewares\CorsMiddleware())->handle();
             
             $routes = Route::getRoutes();
             $this->handleRequest($routes);

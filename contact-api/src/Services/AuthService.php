@@ -67,7 +67,7 @@ class AuthService
     {
         $partes = explode('.', $token);
         if (count($partes) !== 3) {
-            throw new Exception("Token JWT inválido (estrutura errada)");
+            throw new Exception("Token JWT inválido (estrutura errada)", 401);
         }
 
         [$headerB64, $payloadB64, $assinaturaB64] = $partes;
