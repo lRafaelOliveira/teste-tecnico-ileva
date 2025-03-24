@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Contato</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+    <nav class="bg-white shadow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <h1 class="text-xl font-bold text-gray-800">Gerenciar contatos</h1>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <a href="contacts.html"
+                        class="ml-4 px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                        Voltar para contatos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <div class="px-4 py-6 sm:px-0">
+            <div class="bg-white shadow overflow-hidden sm:rounded-lg p-6">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-6">Add Novo Contato</h2>
+
+                <div id="error-message"
+                    class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4 hidden"
+                    role="alert">
+                    <span id="error-text" class="block sm:inline"></span>
+                </div>
+
+                <form id="contactForm" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700">Nome</label>
+                        <input type="text" id="name" name="name" required
+                            class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                    </div>
+
+                    <div class="border-t border-gray-200 pt-4">
+                        <h3 class="text-lg font-medium text-gray-900">Telefone</h3>
+                        <div id="phoneFields" class="mt-2 space-y-4">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex-1">
+                                    <label for="phone" class="block text-sm font-medium text-gray-700">Numero do
+                                        Telefone</label>
+                                    <input type="text" name="phone"
+                                        class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                </div>
+                                <div class="w-1/3">
+                                    <label for="phoneType" class="block text-sm font-medium text-gray-700">Tipo</label>
+                                    <select name="phoneType"
+                                        class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <option value="celular">Celular</option>
+                                        <option value="residencial">Casa</option>
+                                        <option value="comercial">Trabalho</option>
+                                        <option value="whatsapp">WhatsApp</option>
+                                    </select>
+                                </div>
+                                <div class="flex items-end">
+                                    <button type="button"
+                                        class="add-phone-field mt-1 px-3 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-gray-200 pt-4">
+                        <h3 class="text-lg font-medium text-gray-900">Emails</h3>
+                        <div id="emailFields" class="mt-2 space-y-4">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex-1">
+                                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                                    <input type="email" name="email"
+                                        class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                </div>
+                                <div class="w-1/3">
+                                    <label for="emailType" class="block text-sm font-medium text-gray-700">Tipo</label>
+                                    <select name="emailType"
+                                        class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <option value="pessoal">Pessoal</option>
+                                        <option value="profissional">Trabalho</option>
+                                        <option value="outro">Outros</option>
+                                    </select>
+                                </div>
+                                <div class="flex items-end">
+                                    <button type="button"
+                                        class="add-email-field mt-1 px-3 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-gray-200 pt-4">
+                        <h3 class="text-lg font-medium text-gray-900">Endereço</h3>
+                        <div id="addressFields" class="mt-2 space-y-4">
+                            <div class="space-y-4">
+                                <div class="grid grid-cols-1 gap-y-4 gap-x-4 sm:grid-cols-6">
+                                    <div class="sm:col-span-3">
+                                        <label for="addressType"
+                                            class="block text-sm font-medium text-gray-700">Tipo</label>
+                                        <select name="addressType"
+                                            class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            <option value="residencial">Casa</option>
+                                            <option value="comercial">Trabalho</option>
+                                            <option value="outro">Outros</option>
+                                        </select>
+                                    </div>
+                                    <div class="sm:col-span-3">
+                                        <label for="street"
+                                            class="block text-sm font-medium text-gray-700">Logradouro</label>
+                                        <input type="text" name="street"
+                                            class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    </div>
+                                    <div class="sm:col-span-2">
+                                        <label for="number"
+                                            class="block text-sm font-medium text-gray-700">Numero</label>
+                                        <input type="text" name="number"
+                                            class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    </div>
+                                    <div class="sm:col-span-4">
+                                        <label for="neighborhood"
+                                            class="block text-sm font-medium text-gray-700">Bairro</label>
+                                        <input type="text" name="neighborhood"
+                                            class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    </div>
+                                    <div class="sm:col-span-3">
+                                        <label for="city" class="block text-sm font-medium text-gray-700">Cidade</label>
+                                        <input type="text" name="city"
+                                            class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    </div>
+                                    <div class="sm:col-span-3">
+                                        <label for="state"
+                                            class="block text-sm font-medium text-gray-700">Estado</label>
+                                        <input type="text" name="state"
+                                            class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    </div>
+                                    <div class="sm:col-span-3">
+                                        <label for="zipcode" class="block text-sm font-medium text-gray-700">Cep</label>
+                                        <input type="text" name="zipcode"
+                                            class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    </div>
+                                    <div class="sm:col-span-3 flex items-end">
+                                        <button type="button"
+                                            class="add-address-field mt-1 px-3 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                                            <i class="fas fa-plus"></i>Adicionar outro endereço
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-5">
+                        <div class="flex justify-end">
+                            <a href="contacts.html"
+                                class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                                Cancelar
+                            </a>
+                            <button type="submit" id="saveButton"
+                                class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                                Salvar
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // API base URL
+        const API_BASE_URL = 'http://localhost:81';
+
+        // Check if user is authenticated
+        document.addEventListener('DOMContentLoaded', function () {
+            const token = sessionStorage.getItem('token');
+            if (!token) {
+                window.location.href = 'login.html';
+                return;
+            }
+        });
+
+        // Add phone field
+        document.querySelector('.add-phone-field').addEventListener('click', function () {
+            const phoneFields = document.getElementById('phoneFields');
+            const newField = document.createElement('div');
+            newField.className = 'flex items-center space-x-4';
+            newField.innerHTML = `
+                <div class="flex-1">
+                    <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                    <input type="text" name="phone" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                </div>
+                <div class="w-1/3">
+                    <label for="phoneType" class="block text-sm font-medium text-gray-700">Type</label>
+                    <select name="phoneType" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        <option value="celular">Celular</option>
+                        <option value="residencial">Casa</option>
+                        <option value="comercial">Trabalho</option>
+                        <option value="whatsapp">WhatsApp</option>
+                    </select>
+                </div>
+                <div class="flex items-end">
+                    <button type="button" class="remove-field mt-1 px-3 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            `;
+            phoneFields.appendChild(newField);
+
+            // Add event listener to remove button
+            newField.querySelector('.remove-field').addEventListener('click', function () {
+                phoneFields.removeChild(newField);
+            });
+        });
+
+        // Add email field
+        document.querySelector('.add-email-field').addEventListener('click', function () {
+            const emailFields = document.getElementById('emailFields');
+            const newField = document.createElement('div');
+            newField.className = 'flex items-center space-x-4';
+            newField.innerHTML = `
+                <div class="flex-1">
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                    <input type="email" name="email" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                </div>
+                <div class="w-1/3">
+                    <label for="emailType" class="block text-sm font-medium text-gray-700">Type</label>
+                    <select name="emailType" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        <option value="pessoal">Personal</option>
+                        <option value="profissional">Work</option>
+                        <option value="outro">Other</option>
+                    </select>
+                </div>
+                <div class="flex items-end">
+                    <button type="button" class="remove-field mt-1 px-3 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            `;
+            emailFields.appendChild(newField);
+
+            // Add event listener to remove button
+            newField.querySelector('.remove-field').addEventListener('click', function () {
+                emailFields.removeChild(newField);
+            });
+        });
+
+        // Add address field
+        document.querySelector('.add-address-field').addEventListener('click', function () {
+            const addressFields = document.getElementById('addressFields');
+            const newField = document.createElement('div');
+            newField.className = 'space-y-4 mt-4 pt-4 border-t border-gray-200';
+            newField.innerHTML = `
+                <div class="grid grid-cols-1 gap-y-4 gap-x-4 sm:grid-cols-6">
+                    <div class="sm:col-span-3">
+                        <label for="addressType" class="block text-sm font-medium text-gray-700">Type</label>
+                        <select name="addressType" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                            <option value="residencial">Home</option>
+                            <option value="comercial">Work</option>
+                            <option value="outro">Other</option>
+                        </select>
+                    </div>
+                    <div class="sm:col-span-3">
+                        <label for="street" class="block text-sm font-medium text-gray-700">Street</label>
+                        <input type="text" name="street" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label for="number" class="block text-sm font-medium text-gray-700">Number</label>
+                        <input type="text" name="number" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                    </div>
+                    <div class="sm:col-span-4">
+                        <label for="neighborhood" class="block text-sm font-medium text-gray-700">Neighborhood</label>
+                        <input type="text" name="neighborhood" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                    </div>
+                    <div class="sm:col-span-3">
+                        <label for="city" class="block text-sm font-medium text-gray-700">City</label>
+                        <input type="text" name="city" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                    </div>
+                    <div class="sm:col-span-3">
+                        <label for="state" class="block text-sm font-medium text-gray-700">State</label>
+                        <input type="text" name="state" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                    </div>
+                    <div class="sm:col-span-3">
+                        <label for="zipcode" class="block text-sm font-medium text-gray-700">Zip Code</label>
+                        <input type="text" name="zipcode" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                    </div>
+                    <div class="sm:col-span-3 flex items-end">
+                        <button type="button" class="remove-address-field mt-1 px-3 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                            <i class="fas fa-minus"></i> Remove Address
+                        </button>
+                    </div>
+                </div>
+            `;
+            addressFields.appendChild(newField);
+
+            // Add event listener to remove button
+            newField.querySelector('.remove-address-field').addEventListener('click', function () {
+                addressFields.removeChild(newField);
+            });
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const saveButton = document.getElementById('saveButton');
+
+            // Show loading state
+            saveButton.innerHTML = 'Saving...';
+            saveButton.disabled = true;
+
+            // Get phone numbers
+            const phoneInputs = document.querySelectorAll('input[name="phone"]');
+            const phoneTypeInputs = document.querySelectorAll('select[name="phoneType"]');
+            const phones = [];
+
+            for (let i = 0; i < phoneInputs.length; i++) {
+                if (phoneInputs[i].value.trim()) {
+                    phones.push({
+                        numero: phoneInputs[i].value.trim(),
+                        tipo: phoneTypeInputs[i].value
+                    });
+                }
+            }
+
+            // Get emails
+            const emailInputs = document.querySelectorAll('input[name="email"]');
+            const emailTypeInputs = document.querySelectorAll('select[name="emailType"]');
+            const emails = [];
+
+            for (let i = 0; i < emailInputs.length; i++) {
+                if (emailInputs[i].value.trim()) {
+                    emails.push({
+                        email: emailInputs[i].value.trim(),
+                        tipo: emailTypeInputs[i].value
+                    });
+                }
+            }
+
+            // Get addresses
+            const addressTypeInputs = document.querySelectorAll('select[name="addressType"]');
+            const streetInputs = document.querySelectorAll('input[name="street"]');
+            const numberInputs = document.querySelectorAll('input[name="number"]');
+            const neighborhoodInputs = document.querySelectorAll('input[name="neighborhood"]');
+            const cityInputs = document.querySelectorAll('input[name="city"]');
+            const stateInputs = document.querySelectorAll('input[name="state"]');
+            const zipcodeInputs = document.querySelectorAll('input[name="zipcode"]');
+            const addresses = [];
+
+            for (let i = 0; i < streetInputs.length; i++) {
+                if (streetInputs[i].value.trim() && cityInputs[i].value.trim() && stateInputs[i].value.trim()) {
+                    addresses.push({
+                        tipo: addressTypeInputs[i].value,
+                        rua: streetInputs[i].value.trim(),
+                        numero: numberInputs[i].value.trim(),
+                        bairro: neighborhoodInputs[i].value.trim(),
+                        cidade: cityInputs[i].value.trim(),
+                        estado: stateInputs[i].value.trim(),
+                        cep: zipcodeInputs[i].value.trim()
+                    });
+                }
+            }
+
+            // Create contact data object
+            const contactData = {
+                nome: name,
+                telefones: phones,
+                emails: emails,
+                enderecos: addresses
+            };
+
+            try {
+                const token = sessionStorage.getItem('token');
+
+                const response = await fetch(`${API_BASE_URL}/contatos`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify(contactData)
+                });
+
+                if (!response.ok) {
+                    if (response.status === 401) {
+                        sessionStorage.removeItem('token');
+                        window.location.href = 'login.html';
+                        throw new Error('Session expired. Please login again.');
+                    }
+                    throw new Error('Failed to create contact');
+                }
+
+                // Redirect to contacts page
+                window.location.href = 'contacts.html';
+            } catch (error) {
+                // Show error message
+                const errorMessage = document.getElementById('error-message');
+                const errorText = document.getElementById('error-text');
+
+                errorText.textContent = error.message;
+                errorMessage.classList.remove('hidden');
+
+                // Reset button
+                saveButton.innerHTML = 'Save Contact';
+                saveButton.disabled = false;
+            }
+        });
+    </script>
+</body>
+
+</html>

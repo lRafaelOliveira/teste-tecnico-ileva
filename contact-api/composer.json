@@ -1,0 +1,25 @@
+{
+    "name": "ileva/contact-api",
+    "description": "Desafio Técnico para empresa Ileva",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Rafael Souza",
+            "email": "rafael.souzatech@gmail.com"
+        }
+    ],
+    "config": {
+        "vendor-dir": "vendor"
+    },
+    "autoload": {
+        "psr-4": {
+            "core\\": "core/",
+            "src\\": "src/"
+        },
+        "files": [
+            "src/Support/Helpers.php"
+        ]
+    },
+    "require": {},
+    "extra": {}
+}

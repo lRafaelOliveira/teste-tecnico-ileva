@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: php_api
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    environment:
+      - CONF_DB_HOST=db
+      - CONF_DB_USER=root
+      - CONF_DB_PASS=
+      - CONF_DB_NAME=api_contatos
+      - JWT_SECRET=supersecreta
+      - APP_URL=http://localhost:8080
+
+

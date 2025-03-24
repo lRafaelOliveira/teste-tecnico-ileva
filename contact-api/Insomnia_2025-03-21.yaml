@@ -1,0 +1,719 @@
+type: collection.insomnia.rest/5.0
+name: Ileva
+meta:
+  id: wrk_3cb973319e404fb6bcac97712e234f55
+  created: 1742518755714
+  modified: 1742518755714
+collection:
+  - name: Users
+    meta:
+      id: fld_8653c8df090a4412a84e0b453daaf1ef
+      created: 1742522167456
+      modified: 1742524145113
+      sortKey: -1742499615574.5
+    children:
+      - url: "{{ _.host }}/usuarios"
+        name: create
+        meta:
+          id: req_0e90b800159a4f428f08ba8db7a81e21
+          created: 1742522170732
+          modified: 1742523671091
+          isPrivate: false
+          sortKey: -1742522170732
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"nome": "Rafael Souza8",
+            	"email": "rafael8@email.com",
+            	"senha": "123456"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_4d33d054aaaf4c68b2527aef69e2e6e8
+          - name: User-Agent
+            value: insomnia/11.0.0
+            id: pair_6d5ab9e851c74c9c8914d8905b9547e8
+          - id: pair_3a999022363345f3be324a7ebf98d5f0
+            name: Authorization
+            value: Bearer {{ _.token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.host }}/usuarios"
+        name: list
+        meta:
+          id: req_97b4a5115468484693ee1299e8a5c2c4
+          created: 1742522809908
+          modified: 1742523007808
+          isPrivate: false
+          sortKey: -1742522809908
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.0
+            id: pair_6ec5511b0f734532a0ff6192d76c094d
+          - id: pair_e958b8593752461abaa084a11efdc301
+            name: Authorization
+            value: Bearer  {{ _.token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.host }}/usuarios/1"
+        name: find
+        meta:
+          id: req_c5e7afb8634f4f128190e45822e8f490
+          created: 1742523025747
+          modified: 1742523039561
+          isPrivate: false
+          sortKey: -1742522490320
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.0
+            id: pair_6ec5511b0f734532a0ff6192d76c094d
+          - id: pair_e958b8593752461abaa084a11efdc301
+            name: Authorization
+            value: Bearer  {{ _.token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.host }}/usuarios/1"
+        name: update
+        meta:
+          id: req_ac840f4c92e5488ba51078e1ce695c86
+          created: 1742523052780
+          modified: 1742523092518
+          isPrivate: false
+          sortKey: -1742522330526
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"id": "1",
+            	"nome": "Rafael Souza 2",
+            	"session_id": null,
+            	"ultimo_login": null,
+            	"ultima_atividade": null,
+            	"ip_ultimo_acesso": null,
+            	"user_agent": null,
+            	"ativo": "1",
+            	"bloqueado": "0"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.0
+            id: pair_6ec5511b0f734532a0ff6192d76c094d
+          - id: pair_e958b8593752461abaa084a11efdc301
+            name: Authorization
+            value: Bearer  {{ _.token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.host }}/usuarios/8"
+        name: delete
+        meta:
+          id: req_9a6078018328482d96eeeff1d4220a5f
+          created: 1742523618434
+          modified: 1742523649834
+          isPrivate: false
+          sortKey: -1742522410423
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.0
+            id: pair_6ec5511b0f734532a0ff6192d76c094d
+          - id: pair_e958b8593752461abaa084a11efdc301
+            name: Authorization
+            value: Bearer  {{ _.token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Contatos
+    meta:
+      id: fld_fa5cbc5ee96e40429f1e8c08be6d4159
+      created: 1742524134299
+      modified: 1742524140128
+      sortKey: -1742499615524.5
+    children:
+      - url: "{{ _.host }}/contatos"
+        name: create
+        meta:
+          id: req_97664044cb714cd291b5d2e8d0ab6dc9
+          created: 1742524134302
+          modified: 1742524381192
+          isPrivate: false
+          sortKey: -1742522170732
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"nome": "Carlos",
+            	"telefones": [
+            		{
+            			"numero": "11999999999",
+            			"tipo": "celular"
+            		}
+            	],
+            	"emails": [
+            		{
+            			"email": "carlos@email.com"
+            		}
+            	],
+            	"enderecos": [
+            		{
+            			"rua": "Av. Brasil",
+            			"numero": "123",
+            			"cidade": "São Paulo",
+            			"estado": "SP"
+            		}
+            	]
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_4d33d054aaaf4c68b2527aef69e2e6e8
+          - name: User-Agent
+            value: insomnia/11.0.0
+            id: pair_6d5ab9e851c74c9c8914d8905b9547e8
+          - id: pair_3a999022363345f3be324a7ebf98d5f0
+            name: Authorization
+            value: Bearer {{ _.token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.host }}/contatos"
+        name: list
+        meta:
+          id: req_51581e8bdf6048ba8bdfb012cc0b5298
+          created: 1742524134303
+          modified: 1742524402868
+          isPrivate: false
+          sortKey: -1742522809908
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.0
+            id: pair_6ec5511b0f734532a0ff6192d76c094d
+          - id: pair_e958b8593752461abaa084a11efdc301
+            name: Authorization
+            value: Bearer  {{ _.token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.host }}/contatos/1"
+        name: find
+        meta:
+          id: req_c6584488948c40b59bced1dd2cd1df5b
+          created: 1742524134305
+          modified: 1742524400211
+          isPrivate: false
+          sortKey: -1742522490320
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.0
+            id: pair_6ec5511b0f734532a0ff6192d76c094d
+          - id: pair_e958b8593752461abaa084a11efdc301
+            name: Authorization
+            value: Bearer  {{ _.token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.host }}/contatos/1"
+        name: update
+        meta:
+          id: req_9c431a481d0649beaf0619348931292f
+          created: 1742524134307
+          modified: 1742524393728
+          isPrivate: false
+          sortKey: -1742522330526
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"id": "1",
+            	"nome": "Rafael Souza 2",
+            	"session_id": null,
+            	"ultimo_login": null,
+            	"ultima_atividade": null,
+            	"ip_ultimo_acesso": null,
+            	"user_agent": null,
+            	"ativo": "1",
+            	"bloqueado": "0"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.0
+            id: pair_6ec5511b0f734532a0ff6192d76c094d
+          - id: pair_e958b8593752461abaa084a11efdc301
+            name: Authorization
+            value: Bearer  {{ _.token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.host }}/contatos/8"
+        name: delete
+        meta:
+          id: req_10a9a08f221547ad92c18d0e2483af3b
+          created: 1742524134309
+          modified: 1742524397403
+          isPrivate: false
+          sortKey: -1742522410423
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.0
+            id: pair_6ec5511b0f734532a0ff6192d76c094d
+          - id: pair_e958b8593752461abaa084a11efdc301
+            name: Authorization
+            value: Bearer  {{ _.token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.host }}/contatos/7/telefones"
+        name: add telefone
+        meta:
+          id: req_5fe03e6a5e9e470a8354bfe10b929e35
+          created: 1742526471816
+          modified: 1742526698993
+          isPrivate: false
+          sortKey: -1742520470067
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "numero": "11999999999",
+              "tipo": "whatsapp",
+              "observacao": "Número pessoal"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_4d33d054aaaf4c68b2527aef69e2e6e8
+          - name: User-Agent
+            value: insomnia/11.0.0
+            id: pair_6d5ab9e851c74c9c8914d8905b9547e8
+          - id: pair_3a999022363345f3be324a7ebf98d5f0
+            name: Authorization
+            value: Bearer {{ _.token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.host }}/contatos/7/emails"
+        name: add email
+        meta:
+          id: req_75195d2169aa4cab9015beb9438813b9
+          created: 1742526533872
+          modified: 1742527054401
+          isPrivate: false
+          sortKey: -1742519619734.5
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "email": "maria@email.com",
+              "tipo": "profissional",
+              "observacao": "e-mail da empresa"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_4d33d054aaaf4c68b2527aef69e2e6e8
+          - name: User-Agent
+            value: insomnia/11.0.0
+            id: pair_6d5ab9e851c74c9c8914d8905b9547e8
+          - id: pair_3a999022363345f3be324a7ebf98d5f0
+            name: Authorization
+            value: Bearer {{ _.token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.host }}/contatos/7/enderecos"
+        name: Endereço
+        meta:
+          id: req_462e76458b514e0e90f076e46d218e38
+          created: 1742526558425
+          modified: 1742526718637
+          isPrivate: false
+          sortKey: -1742519194568.25
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "tipo": "residencial",
+              "rua": "Av. Brasil",
+              "numero": "123",
+              "bairro": "Centro",
+              "cidade": "São Paulo",
+              "estado": "SP",
+              "cep": "01000-000"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_4d33d054aaaf4c68b2527aef69e2e6e8
+          - name: User-Agent
+            value: insomnia/11.0.0
+            id: pair_6d5ab9e851c74c9c8914d8905b9547e8
+          - id: pair_3a999022363345f3be324a7ebf98d5f0
+            name: Authorization
+            value: Bearer {{ _.token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.host }}/contatos/7/telefones"
+        name: update telefone
+        meta:
+          id: req_2e76c991912842dbabaceb3bebd60eaf
+          created: 1742526689775
+          modified: 1742526739502
+          isPrivate: false
+          sortKey: -1742520044900.75
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "numero": "11988887777",
+              "tipo": "whatsapp",
+              "observacao": "Número atualizado"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_4d33d054aaaf4c68b2527aef69e2e6e8
+          - name: User-Agent
+            value: insomnia/11.0.0
+            id: pair_6d5ab9e851c74c9c8914d8905b9547e8
+          - id: pair_3a999022363345f3be324a7ebf98d5f0
+            name: Authorization
+            value: Bearer {{ _.token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.host }}/contatos/7/emails"
+        name: update email
+        meta:
+          id: req_177c4c1ae5e34d79a42bc350c5edc97b
+          created: 1742526708563
+          modified: 1742526708563
+          isPrivate: false
+          sortKey: -1742519407151.375
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "email": "joao@email.com",
+              "tipo": "profissional",
+              "observacao": "e-mail da empresa"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_4d33d054aaaf4c68b2527aef69e2e6e8
+          - name: User-Agent
+            value: insomnia/11.0.0
+            id: pair_6d5ab9e851c74c9c8914d8905b9547e8
+          - id: pair_3a999022363345f3be324a7ebf98d5f0
+            name: Authorization
+            value: Bearer {{ _.token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.host }}/contatos/7/enderecos"
+        name: update endereço
+        meta:
+          id: req_a222e659f7654bdeb089a27892147808
+          created: 1742526715424
+          modified: 1742526715424
+          isPrivate: false
+          sortKey: -1742518981985.125
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "tipo": "residencial",
+              "rua": "Av. Brasil",
+              "numero": "123",
+              "bairro": "Centro",
+              "cidade": "São Paulo",
+              "estado": "SP",
+              "cep": "01000-000"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_4d33d054aaaf4c68b2527aef69e2e6e8
+          - name: User-Agent
+            value: insomnia/11.0.0
+            id: pair_6d5ab9e851c74c9c8914d8905b9547e8
+          - id: pair_3a999022363345f3be324a7ebf98d5f0
+            name: Authorization
+            value: Bearer {{ _.token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.host }}/contatos/email?email=maria@email.com"
+        name: buscar por email
+        meta:
+          id: req_b952531c8883467a8e73c11749b65a78
+          created: 1742527000685
+          modified: 1742527025625
+          isPrivate: false
+          sortKey: -1742518875693.5625
+        method: GET
+        body:
+          mimeType: application/json
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_4d33d054aaaf4c68b2527aef69e2e6e8
+          - name: User-Agent
+            value: insomnia/11.0.0
+            id: pair_6d5ab9e851c74c9c8914d8905b9547e8
+          - id: pair_3a999022363345f3be324a7ebf98d5f0
+            name: Authorization
+            value: Bearer {{ _.token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.host }}/contatos/telefone?numero=11999999999"
+        name: buscar por telefone
+        meta:
+          id: req_7fee0ea2662a4ea4b43619c3a8f3e277
+          created: 1742527023293
+          modified: 1742527342097
+          isPrivate: false
+          sortKey: -1742518822547.7812
+        method: GET
+        body:
+          mimeType: application/json
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_4d33d054aaaf4c68b2527aef69e2e6e8
+          - name: User-Agent
+            value: insomnia/11.0.0
+            id: pair_6d5ab9e851c74c9c8914d8905b9547e8
+          - id: pair_3a999022363345f3be324a7ebf98d5f0
+            name: Authorization
+            value: Bearer {{ _.token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - url: localhost:81/
+    name: index
+    meta:
+      id: req_2a62389fa0974c4abfe605e8fa34ac92
+      created: 1742518769402
+      modified: 1742520830435
+      isPrivate: false
+      sortKey: -1742518769402
+    method: POST
+    headers:
+      - name: User-Agent
+        value: insomnia/11.0.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:81/login
+    name: login
+    meta:
+      id: req_ce3156d084a745d7bacef22d4fb52d9f
+      created: 1742520835940
+      modified: 1742522641369
+      isPrivate: false
+      sortKey: -1742499615624.5
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"email": "rafael@email.com",
+        	"senha": "123456"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.0.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_72ae2947c77f6481191d5c6d397ec28dc146e2fa
+    created: 1742518755717
+    modified: 1742518778942
+  cookies:
+    - key: PHPSESSID
+      value: mlfm8l6bbvtdo6fai7qseu7di7
+      maxAge: 21600
+      domain: localhost
+      path: /
+      hostOnly: true
+      creation: 2025-03-21T00:59:38.942Z
+      lastAccessed: 2025-03-21T00:59:38.942Z
+      id: 4ac3873e-8640-4dec-ab3e-a9774ab1ba58
+environments:
+  name: Base Environment
+  meta:
+    id: env_72ae2947c77f6481191d5c6d397ec28dc146e2fa
+    created: 1742518755716
+    modified: 1742518755716
+    isPrivate: false
+  subEnvironments:
+    - name: local
+      meta:
+        id: env_95564a09fdc446c58f09b9ca997f42bf
+        created: 1742522218008
+        modified: 1742522935457
+        isPrivate: false
+        sortKey: 1742522218008
+      data:
+        host: localhost:81
+        token: "{% response 'body', 'req_ce3156d084a745d7bacef22d4fb52d9f',
+          'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+    - name: prod
+      meta:
+        id: env_fc393618cad944c9b0231c765dc141a4
+        created: 1742522235169
+        modified: 1742522248777
+        isPrivate: false
+        sortKey: 1742522235169
+      data:
+        host: a

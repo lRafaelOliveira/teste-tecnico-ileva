@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Contact - Contact Management System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+    <nav class="bg-white shadow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <h1 class="text-xl font-bold text-gray-800">Contact Manager</h1>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <a href="contacts.html"
+                        class="ml-4 px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                        Back to Contacts
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <div class="px-4 py-6 sm:px-0">
+            <div id="loading" class="flex justify-center items-center py-10">
+                <svg class="animate-spin h-10 w-10 text-primary-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                    </path>
+                </svg>
+            </div>
+
+            <div id="error-message"
+                class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4 hidden"
+                role="alert">
+                <span id="error-text" class="block sm:inline"></span>
+            </div>
+
+            <div id="contactForm" class="bg-white shadow overflow-hidden sm:rounded-lg p-6 hidden">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-6">Edit Contact</h2>
+
+                <form id="editForm" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                        <input type="text" id="name" name="name" required
+                            class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                    </div>
+
+                    <div class="border-t border-gray-200 pt-4">
+                        <h3 class="text-lg font-medium text-gray-900">Phone Numbers</h3>
+                        <div id="phoneFields" class="mt-2 space-y-4">
+                            <!-- Phone fields will be added here -->
+                        </div>
+                        <button type="button" id="addPhoneBtn"
+                            class="mt-3 inline-flex items-center px-3 py-1 border border-transparent text-sm font-medium rounded-md text-primary-700 bg-primary-100 hover:bg-primary-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                            <i class="fas fa-plus mr-1"></i> Add Phone
+                        </button>
+                    </div>
+
+                    <div class="border-t border-gray-200 pt-4">
+                        <h3 class="text-lg font-medium text-gray-900">Email Addresses</h3>
+                        <div id="emailFields" class="mt-2 space-y-4">
+                            <!-- Email fields will be added here -->
+                        </div>
+                        <button type="button" id="addEmailBtn"
+                            class="mt-3 inline-flex items-center px-3 py-1 border border-transparent text-sm font-medium rounded-md text-primary-700 bg-primary-100 hover:bg-primary-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                            <i class="fas fa-plus mr-1"></i> Add Email
+                        </button>
+                    </div>
+
+                    <div class="border-t border-gray-200 pt-4">
+                        <h3 class="text-lg font-medium text-gray-900">Addresses</h3>
+                        <div id="addressFields" class="mt-2 space-y-4">
+                            <!-- Address fields will be added here -->
+                        </div>
+                        <button type="button" id="addAddressBtn"
+                            class="mt-3 inline-flex items-center px-3 py-1 border border-transparent text-sm font-medium rounded-md text-primary-700 bg-primary-100 hover:bg-primary-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                            <i class="fas fa-plus mr-1"></i> Add Address
+                        </button>
+                    </div>
+
+                    <div class="pt-5">
+                        <div class="flex justify-end">
+                            <a href="contacts.html"
+                                class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                                Cancel
+                            </a>
+                            <button type="submit" id="saveButton"
+                                class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                                Update Contact
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // API base URL
+        const API_BASE_URL = 'http://localhost:81';
+        let contactId = null;
+        let contact = null;
+
+        // Check if user is authenticated
+        document.addEventListener('DOMContentLoaded', function () {
+            const token = sessionStorage.getItem('token');
+            if (!token) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            // Get contact ID from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            contactId = urlParams.get('id');
+
+            if (!contactId) {
+                showError('Contact ID is missing');
+                return;
+            }
+
+            // Load contact details
+            fetchContactDetails(contactId);
+        });
+
+        // Fetch contact details
+        async function fetchContactDetails(id) {
+            const token = sessionStorage.getItem('token');
+            if (!token) return;
+
+            showLoading(true);
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/contatos/${id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (!response.ok) {
+                    if (response.status === 401) {
+                        sessionStorage.removeItem('token');
+                        window.location.href = 'login.html';
+                        throw new Error('Session expired. Please login again.');
+                    }
+                    throw new Error('Failed to fetch contact details');
+                }
+
+                contact = await response.json();
+                populateForm(contact);
+            } catch (error) {
+                showError(error.message);
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        // Populate form with contact data
+        function populateForm(contact) {
+            // Set name
+            document.getElementById('name').value = contact.nome || '';
+
+            // Add phone fields
+            const phoneFields = document.getElementById('phoneFields');
+            phoneFields.innerHTML = '';
+
+            if (contact.telefones && contact.telefones.length > 0) {
+                contact.telefones.forEach(phone => {
+                    const phoneField = document.createElement('div');
+                    phoneField.className = 'flex items-center space-x-4';
+                    phoneField.innerHTML = `
+                        <div class="flex-1">
+                            <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                            <input type="text" name="phone" value="${phone.numero}" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        </div>
+                        <div class="w-1/3">
+                            <label for="phoneType" class="block text-sm font-medium text-gray-700">Type</label>
+                            <select name="phoneType" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                <option value="celular" ${phone.tipo === 'celular' ? 'selected' : ''}>Mobile</option>
+                                <option value="residencial" ${phone.tipo === 'residencial' ? 'selected' : ''}>Home</option>
+                                <option value="comercial" ${phone.tipo === 'comercial' ? 'selected' : ''}>Work</option>
+                                <option value="whatsapp" ${phone.tipo === 'whatsapp' ? 'selected' : ''}>WhatsApp</option>
+                            </select>
+                        </div>
+                        <div class="flex items-end">
+                            <button type="button" class="remove-field mt-1 px-3 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    `;
+                    phoneFields.appendChild(phoneField);
+
+                    // Add event listener to remove button
+                    phoneField.querySelector('.remove-field').addEventListener('click', function () {
+                        phoneFields.removeChild(phoneField);
+                    });
+                });
+            }
+
+            // Add email fields
+            const emailFields = document.getElementById('emailFields');
+            emailFields.innerHTML = '';
+
+            if (contact.emails && contact.emails.length > 0) {
+                contact.emails.forEach(email => {
+                    const emailField = document.createElement('div');
+                    emailField.className = 'flex items-center space-x-4';
+                    emailField.innerHTML = `
+                        <div class="flex-1">
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                            <input type="email" name="email" value="${email.email}" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        </div>
+                        <div class="w-1/3">
+                            <label for="emailType" class="block text-sm font-medium text-gray-700">Type</label>
+                            <select name="emailType" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                <option value="pessoal" ${email.tipo === 'pessoal' ? 'selected' : ''}>Personal</option>
+                                <option value="profissional" ${email.tipo === 'profissional' ? 'selected' : ''}>Work</option>
+                                <option value="outro" ${email.tipo === 'outro' ? 'selected' : ''}>Other</option>
+                            </select>
+                        </div>
+                        <div class="flex items-end">
+                            <button type="button" class="remove-field mt-1 px-3 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    `;
+                    emailFields.appendChild(emailField);
+
+                    // Add event listener to remove button
+                    emailField.querySelector('.remove-field').addEventListener('click', function () {
+                        emailFields.removeChild(emailField);
+                    });
+                });
+            }
+
+            // Add address fields
+            const addressFields = document.getElementById('addressFields');
+            addressFields.innerHTML = '';
+
+            if (contact.enderecos && contact.enderecos.length > 0) {
+                contact.enderecos.forEach(address => {
+                    const addressField = document.createElement('div');
+                    addressField.className = 'space-y-4';
+                    addressField.innerHTML = `
+                        <div class="grid grid-cols-1 gap-y-4 gap-x-4 sm:grid-cols-6">
+                            <div class="sm:col-span-3">
+                                <label for="addressType" class="block text-sm font-medium text-gray-700">Type</label>
+                                <select name="addressType" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <option value="residencial" ${address.tipo === 'residencial' ? 'selected' : ''}>Home</option>
+                                    <option value="comercial" ${address.tipo === 'comercial' ? 'selected' : ''}>Work</option>
+                                    <option value="outro" ${address.tipo === 'outro' ? 'selected' : ''}>Other</option>
+                                </select>
+                            </div>
+                            <div class="sm:col-span-3">
+                                <label for="street" class="block text-sm font-medium text-gray-700">Street</label>
+                                <input type="text" name="street" value="${address.rua || ''}" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                            </div>
+                            <div class="sm:col-span-2">
+                                <label for="number" class="block text-sm font-medium text-gray-700">Number</label>
+                                <input type="text" name="number" value="${address.numero || ''}" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                            </div>
+                            <div class="sm:col-span-4">
+                                <label for="neighborhood" class="block text-sm font-medium text-gray-700">Neighborhood</label>
+                                <input type="text" name="neighborhood" value="${address.bairro || ''}" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                            </div>
+                            <div class="sm:col-span-3">
+                                <label for="city" class="block text-sm font-medium text-gray-700">City</label>
+                                <input type="text" name="city" value="${address.cidade || ''}" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                            </div>
+                            <div class="sm:col-span-3">
+                                <label for="state" class="block text-sm font-medium text-gray-700">State</label>
+                                <input type="text" name="state" value="${address.estado || ''}" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                            </div>
+                            <div class="sm:col-span-3">
+                                <label for="zipcode" class="block text-sm font-medium text-gray-700">Zip Code</label>
+                                <input type="text" name="zipcode" value="${address.cep || ''}" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                            </div>
+                            <div class="sm:col-span-3 flex items-end">
+                                <button type="button" class="remove-address-field mt-1 px-3 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                    <i class="fas fa-minus"></i> Remove Address
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    addressFields.appendChild(addressField);
+
+                    // Add event listener to remove button
+                    addressField.querySelector('.remove-address-field').addEventListener('click', function () {
+                        addressFields.removeChild(addressField);
+                    });
+                });
+            }
+
+            // Show form
+            document.getElementById('contactForm').classList.remove('hidden');
+        }
+
+        // Add phone field
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('addPhoneBtn').addEventListener('click', function () {
+                const phoneFields = document.getElementById('phoneFields');
+                const newField = document.createElement('div');
+                newField.className = 'flex items-center space-x-4';
+                newField.innerHTML = `
+                    <div class="flex-1">
+                        <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                        <input type="text" name="phone" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                    </div>
+                    <div class="w-1/3">
+                        <label for="phoneType" class="block text-sm font-medium text-gray-700">Type</label>
+                        <select name="phoneType" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                            <option value="celular">Mobile</option>
+                            <option value="residencial">Home</option>
+                            <option value="comercial">Work</option>
+                            <option value="whatsapp">WhatsApp</option>
+                        </select>
+                    </div>
+                    <div class="flex items-end">
+                        <button type="button" class="remove-field mt-1 px-3 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                `;
+                phoneFields.appendChild(newField);
+
+                // Add event listener to remove button
+                newField.querySelector('.remove-field').addEventListener('click', function () {
+                    phoneFields.removeChild(newField);
+                });
+            });
+
+            // Add email field
+            document.getElementById('addEmailBtn').addEventListener('click', function () {
+                const emailFields = document.getElementById('emailFields');
+                const newField = document.createElement('div');
+                newField.className = 'flex items-center space-x-4';
+                newField.innerHTML = `
+                    <div class="flex-1">
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                        <input type="email" name="email" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                    </div>
+                    <div class="w-1/3">
+                        <label for="emailType" class="block text-sm font-medium text-gray-700">Type</label>
+                        <select name="emailType" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                            <option value="pessoal">Personal</option>
+                            <option value="profissional">Work</option>
+                            <option value="outro">Other</option>
+                        </select>
+                    </div>
+                    <div class="flex items-end">
+                        <button type="button" class="remove-field mt-1 px-3 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                `;
+                emailFields.appendChild(newField);
+
+                // Add event listener to remove button
+                newField.querySelector('.remove-field').addEventListener('click', function () {
+                    emailFields.removeChild(newField);
+                });
+            });
+
+            // Add address field
+            document.getElementById('addAddressBtn').addEventListener('click', function () {
+                const addressFields = document.getElementById('addressFields');
+                const newField = document.createElement('div');
+                newField.className = 'space-y-4 mt-4 pt-4 border-t border-gray-200';
+                newField.innerHTML = `
+                    <div class="grid grid-cols-1 gap-y-4 gap-x-4 sm:grid-cols-6">
+                        <div class="sm:col-span-3">
+                            <label for="addressType" class="block text-sm font-medium text-gray-700">Type</label>
+                            <select name="addressType" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                <option value="residencial">Home</option>
+                                <option value="comercial">Work</option>
+                                <option value="outro">Other</option>
+                            </select>
+                        </div>
+                        <div class="sm:col-span-3">
+                            <label for="street" class="block text-sm font-medium text-gray-700">Street</label>
+                            <input type="text" name="street" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label for="number" class="block text-sm font-medium text-gray-700">Number</label>
+                            <input type="text" name="number" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        </div>
+                        <div class="sm:col-span-4">
+                            <label for="neighborhood" class="block text-sm font-medium text-gray-700">Neighborhood</label>
+                            <input type="text" name="neighborhood" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        </div>
+                        <div class="sm:col-span-3">
+                            <label for="city" class="block text-sm font-medium text-gray-700">City</label>
+                            <input type="text" name="city" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        </div>
+                        <div class="sm:col-span-3">
+                            <label for="state" class="block text-sm font-medium text-gray-700">State</label>
+                            <input type="text" name="state" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        </div>
+                        <div class="sm:col-span-3">
+                            <label for="zipcode" class="block text-sm font-medium text-gray-700">Zip Code</label>
+                            <input type="text" name="zipcode" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        </div>
+                        <div class="sm:col-span-3 flex items-end">
+                            <button type="button" class="remove-address-field mt-1 px-3 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                <i class="fas fa-minus"></i> Remove Address
+                            </button>
+                        </div>
+                    </div>
+                `;
+                addressFields.appendChild(newField);
+
+                // Add event listener to remove button
+                newField.querySelector('.remove-address-field').addEventListener('click', function () {
+                    addressFields.removeChild(newField);
+                });
+            });
+
+            // Form submission
+            document.getElementById('editForm').addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                const name = document.getElementById('name').value;
+                const saveButton = document.getElementById('saveButton');
+
+                // Show loading state
+                saveButton.innerHTML = 'Updating...';
+                saveButton.disabled = true;
+
+                // Get phone numbers
+                const phoneInputs = document.querySelectorAll('input[name="phone"]');
+                const phoneTypeInputs = document.querySelectorAll('select[name="phoneType"]');
+                const phones = [];
+
+                for (let i = 0; i < phoneInputs.length; i++) {
+                    if (phoneInputs[i].value.trim()) {
+                        phones.push({
+                            numero: phoneInputs[i].value.trim(),
+                            tipo: phoneTypeInputs[i].value
+                        });
+                    }
+                }
+
+                // Get emails
+                const emailInputs = document.querySelectorAll('input[name="email"]');
+                const emailTypeInputs = document.querySelectorAll('select[name="emailType"]');
+                const emails = [];
+
+                for (let i = 0; i < emailInputs.length; i++) {
+                    if (emailInputs[i].value.trim()) {
+                        emails.push({
+                            email: emailInputs[i].value.trim(),
+                            tipo: emailTypeInputs[i].value
+                        });
+                    }
+                }
+
+                // Get addresses
+                const addressTypeInputs = document.querySelectorAll('select[name="addressType"]');
+                const streetInputs = document.querySelectorAll('input[name="street"]');
+                const numberInputs = document.querySelectorAll('input[name="number"]');
+                const neighborhoodInputs = document.querySelectorAll('input[name="neighborhood"]');
+                const cityInputs = document.querySelectorAll('input[name="city"]');
+                const stateInputs = document.querySelectorAll('input[name="state"]');
+                const zipcodeInputs = document.querySelectorAll('input[name="zipcode"]');
+                const addresses = [];
+
+                for (let i = 0; i < streetInputs.length; i++) {
+                    if (streetInputs[i].value.trim() && cityInputs[i].value.trim() && stateInputs[i].value.trim()) {
+                        addresses.push({
+                            tipo: addressTypeInputs[i].value,
+                            rua: streetInputs[i].value.trim(),
+                            numero: numberInputs[i].value.trim(),
+                            bairro: neighborhoodInputs[i].value.trim(),
+                            cidade: cityInputs[i].value.trim(),
+                            estado: stateInputs[i].value.trim(),
+                            cep: zipcodeInputs[i].value.trim()
+                        });
+                    }
+                }
+
+                // Create contact data object
+                const contactData = {
+                    id: contactId,
+                    nome: name,
+                    telefones: phones,
+                    emails: emails,
+                    enderecos: addresses
+                };
+
+                try {
+                    const token = sessionStorage.getItem('token');
+
+                    const response = await fetch(`${API_BASE_URL}/contatos/${contactId}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        },
+                        body: JSON.stringify(contactData)
+                    });
+
+                    if (!response.ok) {
+                        if (response.status === 401) {
+                            sessionStorage.removeItem('token');
+                            window.location.href = 'login.html';
+                            throw new Error('Session expired. Please login again.');
+                        }
+                        throw new Error('Failed to update contact');
+                    }
+
+                    // Redirect to contacts page
+                    window.location.href = 'contacts.html';
+                } catch (error) {
+                    // Show error message
+                    showError(error.message);
+
+                    // Reset button
+                    saveButton.innerHTML = 'Update Contact';
+                    saveButton.disabled = false;
+                }
+            });
+        });
+
+        // Show/hide loading spinner
+        function showLoading(show) {
+            const loading = document.getElementById('loading');
+            const contactForm = document.getElementById('contactForm');
+
+            if (show) {
+                loading.classList.remove('hidden');
+                contactForm.classList.add('hidden');
+            } else {
+                loading.classList.add('hidden');
+            }
+        }
+
+        // Show error message
+        function showError(message) {
+            const errorMessage = document.getElementById('error-message');
+            const errorText = document.getElementById('error-text');
+
+            errorText.textContent = message;
+            errorMessage.classList.remove('hidden');
+
+            // Hide after 5 seconds
+            setTimeout(() => {
+                errorMessage.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+
+</html>
